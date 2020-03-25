@@ -5,16 +5,6 @@
 //==== Daniel Caicedo Jaramillo & Maria Jose Suarez Peña
 
 enum meses{
-	ENERO = 1,
-	FEBRERO = 2,
-	MARZO = 3,
-	ABRIL = 4,
-	MAYO = 5,
-	JUNIO = 6,
-	JULIO = 7,
-	AGOSTO = 8,
-	SEPTIEMBRE = 9,
-	OCTUBRE = 10,
 	NOVIEMBRE = 11,
 	DICIEMBRE = 12
 };
@@ -25,10 +15,12 @@ typedef struct persona{
 } persona;
 
 int menu(){
+	
 	int option;
 	printf("1 Agregar persona\n");
 	printf("2 Cumples del mes\n");
 	printf("3 Ver todos los usuarios\n");
+	printf("4 Ver cumples de un dia\n");
 	printf("0 Salir\n");
 	scanf("%d", &option);
 	
@@ -50,6 +42,8 @@ void crearPersona(persona calendario[12][5], int personasCount[12]){
 	
 	if(newP.nacim[1] == NOVIEMBRE)
 		printf("<Sugoi>\n");
+	if(newP.nacim[1] == DICIEMBRE && newP.nacim[0] == 24)
+		printf("<MerryNawidad>\n");
 	
 	mes = newP.nacim[1]-1;
 	
@@ -65,7 +59,6 @@ void crearPersona(persona calendario[12][5], int personasCount[12]){
 }
 
 void verCumples(int mes, persona calendario[12][5], int personasCount[12]){
-	
 	
 	int i;
 	mes--;
@@ -101,10 +94,29 @@ void verCalendario(persona calendario[12][5], int personasCount[12]){
 	return;
 }
 
+void encontrarCumpleDia(int dia, persona calendario[12][5], int personasCount[12], int fil, int col){
+	
+	if(calendario[fil][col].nacim[0] == dia){
+		printf(">>> %s cumple el %d de %d\n", calendario[fil][col].name, dia, calendario[fil][col].nacim[1]);
+		return;
+	}
+	if(fil == 11){
+		printf("No se pudo encontrar\n");
+		return;
+	}
+	if(col == personasCount[fil]){
+		fil++;
+		col = 0;
+	}else col++;
+	encontrarCumpleDia(dia, calendario, personasCount, fil, col);
+	
+	return;
+}
+
 
 int main(){
    
-    int option, mes;
+    int option, mes, dia;
    
     persona calendario[12][5];
     int personasCount[12] = {};
@@ -122,6 +134,10 @@ int main(){
 			break;
 			case 3:
 			verCalendario(calendario, personasCount);
+			break;
+			case 4:
+			printf("Dia: "); scanf("%d", &dia);
+			encontrarCumpleDia(dia, calendario, personasCount, 0, 0);
 			break;
 			case 0:
 			break;
