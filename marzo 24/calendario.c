@@ -1,28 +1,15 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-//==== Daniel Caicedo Jaramillo & Maria Jose Suarez Peña
-
-enum meses{
-	NOVIEMBRE = 11,
-	DICIEMBRE = 12
-};
-
-typedef struct persona{
-	char name[20];
-	int nacim[3]; // [dia][mes][año]
-} persona;
+#include "calendario.h"
 
 int menu(){
 	
 	int option;
-	printf("1 Agregar persona\n");
-	printf("2 Cumples del mes\n");
-	printf("3 Ver todos los usuarios\n");
-	printf("4 Ver cumples de un dia\n");
+	printf("===Calendario Cumples===\n");
+	printf("1 Agregar persona\n"); 
+	printf("2 Cumples del mes\n"); 
+	printf("3 Ver todos los usuarios\n"); 
+	printf("4 Ver cumples de un dia\n"); 
 	printf("0 Salir\n");
-	scanf("%d", &option);
+	printf("==> "); scanf("%d", &option);
 	
 	return option;
 }
@@ -97,52 +84,20 @@ void verCalendario(persona calendario[12][5], int personasCount[12]){
 void encontrarCumpleDia(int dia, persona calendario[12][5], int personasCount[12], int fil, int col){
 	
 	if(calendario[fil][col].nacim[0] == dia){
-		printf(">>> %s cumple el %d de %d\n", calendario[fil][col].name, dia, calendario[fil][col].nacim[1]);
+		printf(">>> %s cumple el %d del %d\n", calendario[fil][col].name, dia, calendario[fil][col].nacim[1]);
 		return;
 	}
-	if(fil == 11){
-		printf("No se pudo encontrar\n");
-		return;
-	}
+	
 	if(col == personasCount[fil]){
 		fil++;
 		col = 0;
 	}else col++;
+	
+	if(fil == 12){ //Si llega a 12 ya se sale del calendario.
+		printf("No se pudo encontrar\n");
+		return;
+	}
 	encontrarCumpleDia(dia, calendario, personasCount, fil, col);
 	
 	return;
-}
-
-
-int main(){
-   
-    int option, mes, dia;
-   
-    persona calendario[12][5];
-    int personasCount[12] = {};
-	
-    do{
-		option = menu();
-		
-		switch(option){
-			case 1:
-			crearPersona(calendario, personasCount);
-			break;
-			case 2:
-			printf("Mes: "); scanf("%d", &mes); 
-			verCumples(mes, calendario, personasCount);
-			break;
-			case 3:
-			verCalendario(calendario, personasCount);
-			break;
-			case 4:
-			printf("Dia: "); scanf("%d", &dia);
-			encontrarCumpleDia(dia, calendario, personasCount, 0, 0);
-			break;
-			case 0:
-			break;
-		}
-	}while(option != 0);
-
-    return 0;
 }
