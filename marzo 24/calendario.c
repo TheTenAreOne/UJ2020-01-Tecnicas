@@ -27,6 +27,7 @@ void crearPersona(persona calendario[12][5], int personasCount[12]){
 	printf("Mes: "); scanf("%d", &newP.nacim[1]);
 	printf("Anio: "); scanf("%d", &newP.nacim[2]);
 	
+	// Ok me gusta la idea de usar los enums así
 	if(newP.nacim[1] == NOVIEMBRE)
 		printf("<Sugoi>\n");
 	if(newP.nacim[1] == DICIEMBRE && newP.nacim[0] == 24)
@@ -34,7 +35,7 @@ void crearPersona(persona calendario[12][5], int personasCount[12]){
 	
 	mes = newP.nacim[1]-1;
 	
-	if(personasCount[mes] >= 5){
+	if(personasCount[mes] >= 5){  
 		printf("Este mes esta lleno\n");
 		return;
 	}else{
@@ -74,10 +75,10 @@ void verCalendario(persona calendario[12][5], int personasCount[12]){
 			printf("%s %d %d\n", calendario[i][j].name, calendario[i][j].nacim[0], calendario[i][j].nacim[2]);
 		}
 	}
+	// Ojo estos espacios hacen el código feo
 	
-	
-	
-	
+
+		
 	return;
 }
 
@@ -91,7 +92,7 @@ void encontrarCumpleDia(int dia, persona calendario[12][5], int personasCount[12
 	if(col == personasCount[fil]){
 		fil++;
 		col = 0;
-	}else col++;
+	}else col++; // Es mejor que siempre pongas llaves para evitar errores
 	
 	if(fil == 12){ //Si llega a 12 ya se sale del calendario.
 		printf("No se pudo encontrar\n");
