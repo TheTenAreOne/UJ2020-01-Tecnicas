@@ -1,0 +1,7 @@
+#Historia entretenida
+
+# Ojo con la ortografía, te señalé algunos errros de tilde
+# Le falta el desenlace a la  historia
+# el concepto que pusiste como matriz me parece que es un arreglo
+# break no estaba dentro de los conceptos que pedí
+# lo que pones de struct me parece que no representa bn el concepto 
