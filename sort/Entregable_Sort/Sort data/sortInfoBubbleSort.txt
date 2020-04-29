@@ -1,0 +1,162 @@
+---------------------------
+   = Bubble sort  =     
+# of elements: 10
+Starting time: 2
+Finish time: 2
+Time used: 0.000000
+---------------------------
+---------------------------
+   = Bubble sort  =     
+# of elements: 100
+Starting time: 6
+Finish time: 7
+Time used: 1.000000
+---------------------------
+---------------------------
+   = Bubble sort  =     
+# of elements: 1000
+Starting time: 61
+Finish time: 66
+Time used: 5.000000
+---------------------------
+---------------------------
+   = Bubble sort  =     
+# of elements: 10000
+Starting time: 461
+Finish time: 939
+Time used: 478.000000
+---------------------------
+---------------------------
+   = Bubble sort  =     
+# of elements: 20000
+Starting time: 923
+Finish time: 2835
+Time used: 1912.000000
+---------------------------
+---------------------------
+   = Bubble sort  =     
+# of elements: 30000
+Starting time: 1393
+Finish time: 5700
+Time used: 4307.000000
+---------------------------
+---------------------------
+   = Bubble sort  =     
+# of elements: 40000
+Starting time: 1850
+Finish time: 9503
+Time used: 7653.000000
+---------------------------
+---------------------------
+   = Bubble sort  =     
+# of elements: 50000
+Starting time: 2325
+Finish time: 14263
+Time used: 11938.000000
+---------------------------
+---------------------------
+   = Bubble sort  =     
+# of elements: 60000
+Starting time: 2815
+Finish time: 20058
+Time used: 17243.000000
+---------------------------
+---------------------------
+   = Bubble sort  =     
+# of elements: 70000
+Starting time: 3234
+Finish time: 26715
+Time used: 23481.000000
+---------------------------
+---------------------------
+   = Bubble sort  =     
+# of elements: 80000
+Starting time: 3688
+Finish time: 34510
+Time used: 30822.000000
+---------------------------
+---------------------------
+   = Bubble sort  =     
+# of elements: 90000
+Starting time: 4170
+Finish time: 43494
+Time used: 39324.000000
+---------------------------
+---------------------------
+   = Bubble sort  =     
+# of elements: 99999
+Starting time: 4622
+Finish time: 53314
+Time used: 48692.000000
+---------------------------
+
+---------------------------
+   = Bubble sort Improved =     
+# of elements: 10000
+Starting time: 457
+Finish time: 950
+Time used: 493.000000
+---------------------------
+---------------------------
+   = Bubble sort Improved =     
+# of elements: 20000
+Starting time: 922
+Finish time: 2896
+Time used: 1974.000000
+---------------------------
+---------------------------
+   = Bubble sort Improved =     
+# of elements: 30000
+Starting time: 1386
+Finish time: 5826
+Time used: 4440.000000
+---------------------------
+---------------------------
+   = Bubble sort Improved =     
+# of elements: 40000
+Starting time: 1848
+Finish time: 9754
+Time used: 7906.000000
+---------------------------
+---------------------------
+   = Bubble sort Improved =     
+# of elements: 50000
+Starting time: 2294
+Finish time: 14655
+Time used: 12361.000000
+---------------------------
+---------------------------
+   = Bubble sort Improved =     
+# of elements: 60000
+Starting time: 2770
+Finish time: 20624
+Time used: 17854.000000
+---------------------------
+---------------------------
+   = Bubble sort Improved =     
+# of elements: 70000
+Starting time: 3213
+Finish time: 27503
+Time used: 24290.000000
+---------------------------
+---------------------------
+   = Bubble sort Improved =     
+# of elements: 80000
+Starting time: 3698
+Finish time: 35396
+Time used: 31698.000000
+---------------------------
+---------------------------
+   = Bubble sort Improved =     
+# of elements: 90000
+Starting time: 4151
+Finish time: 44330
+Time used: 40179.000000
+---------------------------
+---------------------------
+   = Bubble sort Improved =     
+# of elements: 99999
+Starting time: 4798
+Finish time: 56645
+Time used: 51847.000000
+---------------------------
