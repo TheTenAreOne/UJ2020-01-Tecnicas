@@ -1,0 +1,441 @@
+---------------------------
+       = Merge sort  =     
+# of elements: 10
+Starting time: 2
+Finish time: 2
+Time used: 0.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 100
+Starting time: 5
+Finish time: 5
+Time used: 0.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 1000
+Starting time: 47
+Finish time: 47
+Time used: 0.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 10000
+Starting time: 488
+Finish time: 489
+Time used: 1.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 99999
+Starting time: 4749
+Finish time: 4762
+Time used: 13.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 10
+Starting time: 1
+Finish time: 3
+Time used: 2.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 100
+Starting time: 6
+Finish time: 7
+Time used: 1.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 1000
+Starting time: 49
+Finish time: 53
+Time used: 4.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 10000
+Starting time: 483
+Finish time: 658
+Time used: 175.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 99999
+Starting time: 4900
+Finish time: 19788
+Time used: 14888.000000
+---------------------------
+
+
+== AQUI EMPIEZA LOS CONJUNTOS ORDENADOS ==
+---------------------------
+       = Merge sort  =     
+# of elements: 10
+Starting time: 1
+Finish time: 1
+Time used: 0.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 100
+Starting time: 6
+Finish time: 6
+Time used: 0.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 1000
+Starting time: 65
+Finish time: 66
+Time used: 1.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 10000
+Starting time: 522
+Finish time: 523
+Time used: 1.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 99999
+Starting time: 5059
+Finish time: 5072
+Time used: 13.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 10
+Starting time: 1
+Finish time: 1
+Time used: 0.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 100
+Starting time: 5
+Finish time: 5
+Time used: 0.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 1000
+Starting time: 47
+Finish time: 48
+Time used: 1.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 10000
+Starting time: 537
+Finish time: 674
+Time used: 137.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 99999
+Starting time: 4910
+Finish time: 18712
+Time used: 13802.000000
+---------------------------
+
+
+
+== PROBANDO CON VALORES POR ENCIMA DE 10.000 ==
+
+
+---------------------------
+       = Merge sort  =     
+# of elements: 15000
+Starting time: 784
+Finish time: 786
+Time used: 2.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 20000
+Starting time: 1054
+Finish time: 1056
+Time used: 2.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 30000
+Starting time: 1533
+Finish time: 1537
+Time used: 4.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 40000
+Starting time: 1964
+Finish time: 1969
+Time used: 5.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 50000
+Starting time: 2473
+Finish time: 2480
+Time used: 7.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 60000
+Starting time: 2916
+Finish time: 2923
+Time used: 7.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 70000
+Starting time: 3545
+Finish time: 3554
+Time used: 9.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 80000
+Starting time: 3918
+Finish time: 3928
+Time used: 10.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 90000
+Starting time: 4505
+Finish time: 4517
+Time used: 12.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 15000
+Starting time: 822
+Finish time: 1150
+Time used: 328.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 20000
+Starting time: 980
+Finish time: 1581
+Time used: 601.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 30000
+Starting time: 1499
+Finish time: 2813
+Time used: 1314.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 40000
+Starting time: 2001
+Finish time: 4357
+Time used: 2356.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 50000
+Starting time: 2478
+Finish time: 6206
+Time used: 3728.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 60000
+Starting time: 2997
+Finish time: 8307
+Time used: 5310.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 70000
+Starting time: 3366
+Finish time: 10622
+Time used: 7256.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 80000
+Starting time: 3935
+Finish time: 13436
+Time used: 9501.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 90000
+Starting time: 4383
+Finish time: 16380
+Time used: 11997.000000
+---------------------------
+
+== AHORA SI ESTA ORDENADO ==
+
+
+---------------------------
+       = Merge sort  =     
+# of elements: 15000
+Starting time: 786
+Finish time: 787
+Time used: 1.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 20000
+Starting time: 1010
+Finish time: 1013
+Time used: 3.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 30000
+Starting time: 1508
+Finish time: 1511
+Time used: 3.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 40000
+Starting time: 1909
+Finish time: 1914
+Time used: 5.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 50000
+Starting time: 2471
+Finish time: 2477
+Time used: 6.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 60000
+Starting time: 2909
+Finish time: 2917
+Time used: 8.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 70000
+Starting time: 3365
+Finish time: 3374
+Time used: 9.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 80000
+Starting time: 3861
+Finish time: 3871
+Time used: 10.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 90000
+Starting time: 4369
+Finish time: 4380
+Time used: 11.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 15000
+Starting time: 849
+Finish time: 1153
+Time used: 304.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 20000
+Starting time: 964
+Finish time: 1505
+Time used: 541.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 30000
+Starting time: 1424
+Finish time: 2661
+Time used: 1237.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 40000
+Starting time: 1975
+Finish time: 4170
+Time used: 2195.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 50000
+Starting time: 2460
+Finish time: 5897
+Time used: 3437.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 60000
+Starting time: 2898
+Finish time: 7838
+Time used: 4940.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 70000
+Starting time: 3413
+Finish time: 10182
+Time used: 6769.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 80000
+Starting time: 3933
+Finish time: 12773
+Time used: 8840.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 90000
+Starting time: 4442
+Finish time: 15624
+Time used: 11182.000000
+---------------------------
+---------------------------
+       = Merge sort  =     
+# of elements: 90000
+Starting time: 4191
+Finish time: 4202
+Time used: 11.000000
+---------------------------
+
+---------------------------
+   = Selection sort  =     
+# of elements: 250000
+Starting time: 11029
+Finish time: 101179
+Time used: 90150.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 150000
+Starting time: 6612
+Finish time: 39256
+Time used: 32644.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 180000
+Starting time: 8316
+Finish time: 55540
+Time used: 47224.000000
+---------------------------
+---------------------------
+   = Selection sort  =     
+# of elements: 110000
+Starting time: 5049
+Finish time: 22314
+Time used: 17265.000000
+---------------------------
