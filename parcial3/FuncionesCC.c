@@ -15,7 +15,6 @@ CentroC * crearCentroComercial(int * fil, int * col, char * name){
 
 	
 	CentroC * centroC = malloc( sizeof(CentroC) );
-	centroC->locales = malloc(sizeof(Local*) * (*fil));
 	
 	strcpy( centroC->nombreCentro , name );
 	
@@ -23,15 +22,13 @@ CentroC * crearCentroComercial(int * fil, int * col, char * name){
 	
 	centroC->localesxPiso = *col;
 	
-	for(i = 0; i < *col; i++){
-		centroC->locales[i] = malloc(sizeof(Local) * (*col));
-	}
-	
 	for(i = 0; i < *fil; i++){
 		for(j = 0; j < *col; j++){
 			Local newLocal;
-			newLocal.DISPONIBLE = 1;
+			newLocal.disponible = 1;
 			newLocal.idLocal = counter;
+			newLocal.precio = 0;
+			newLocal.numPersonas = 0;
 			counter++;
 			centroC->locales[i][j] = newLocal;
 		}
@@ -42,8 +39,8 @@ CentroC * crearCentroComercial(int * fil, int * col, char * name){
 
 
 //Agrega un local en el piso deseado y la posición deseada
-void agregarLocal(int fil, int col, Local ** centroComercial){
-	int piso, local;
+void agregarLocal(int fil, int col, Local centroComercial[][MAX_LOCALES] ){
+	int piso, local, precio;
 	do{
 		printf("Piso: "); scanf("%d", &piso);
 		if(piso > fil || piso < 0)
@@ -52,22 +49,25 @@ void agregarLocal(int fil, int col, Local ** centroComercial){
 		
 	do{
 		printf("Numero de local: "); scanf("%d", &local);
-		if(centroComercial[piso][local].DISPONIBLE == NODISPONIBLE)
-			printf("Local no DISPONIBLE\n");
+		if(centroComercial[piso][local].disponible == NODISPONIBLE)
+			printf("Local no disponible\n");
 	}while(local < 0 || local >= col || 
-	centroComercial[piso][local].DISPONIBLE == NODISPONIBLE);
+	centroComercial[piso][local].disponible == NODISPONIBLE);
 	
 	centroComercial[piso][local].pisoLocal = piso;
 	centroComercial[piso][local].numLocalxPiso = local;
-	centroComercial[piso][local].DISPONIBLE = 0;
+	centroComercial[piso][local].disponible = 0;
 	printf("nombre: "); scanf("%s", centroComercial[piso][local].nombreLocal);
+	printf("precio: "); scanf("%d", &precio);
+	centroComercial[piso][local].precio = precio;
+	printf("llega aqui\n");
 	printf("Local <%s> creado exitosamente\n", centroComercial[piso][local].nombreLocal);
 	return;
 }
 
 
 //Elimina un local (si se encontraba no DISPONIBLE, ahora estara DISPONIBLE)
-void eliminarLocal(int fil, int col, Local ** centroComercial){
+void eliminarLocal(int fil, int col, Local centroComercial[][MAX_LOCALES] ){
 	int piso, local;
 	do{
 		printf("Piso: "); scanf("%d", &piso);
@@ -80,18 +80,18 @@ void eliminarLocal(int fil, int col, Local ** centroComercial){
 		if(local > col || local < 0)
 			printf("numero invalido max:%d\n", col-1);
 	}while(local < 0 || local >= col);
-	centroComercial[piso][local].DISPONIBLE = DISPONIBLE;
+	centroComercial[piso][local].disponible = DISPONIBLE;
 	printf("El local <ID:%d> ahora se encuentra DISPONIBLE\n", 
 	centroComercial[piso][local].idLocal);
 	return;
 }
 
 //Ver todos los locales arrendados
-void verTodosLocales(int fil, int col, Local ** centroComercial){
+void verTodosLocales(int fil, int col, Local centroComercial[][MAX_LOCALES] ){
 	int i, j;
 	for(i = 0; i < fil; i++){
 		for(j = 0; j < col; j++){
-			if(centroComercial[i][j].DISPONIBLE == NODISPONIBLE){
+			if(centroComercial[i][j].disponible == NODISPONIBLE){
 				printf("[%s, piso: %d, local: %d, id: %d]\n",
 				centroComercial[i][j].nombreLocal, 
 				centroComercial[i][j].pisoLocal, 
@@ -104,7 +104,7 @@ void verTodosLocales(int fil, int col, Local ** centroComercial){
 }
 
 //Retorna el número de locales DISPONIBLEs
-int cantidadLocalesDisponibles(int fil, int col, Local ** centroComercial, int i, int j, int counter){
+int cantidadLocalesDisponibles(int fil, int col, Local centroComercial[][MAX_LOCALES], int i, int j, int counter){
 	if(j == col){
 		j = 0;
 		i++;
@@ -112,7 +112,7 @@ int cantidadLocalesDisponibles(int fil, int col, Local ** centroComercial, int i
 	if(i == fil){
 		return counter;
 	}
-	if(centroComercial[i][j].DISPONIBLE == DISPONIBLE){
+	if(centroComercial[i][j].disponible == DISPONIBLE){
 		counter++;
 	}
 	j++;
@@ -120,7 +120,7 @@ int cantidadLocalesDisponibles(int fil, int col, Local ** centroComercial, int i
 }
 
 //Muestra info de los locales DISPONIBLEs
-void verLocalesDisponibles(int fil, int col, Local ** centroComercial, int i, int j){
+void verLocalesDisponibles(int fil, int col, Local centroComercial[][MAX_LOCALES], int i, int j){
 	if(j == col){
 		j = 0;
 		i++;
@@ -128,7 +128,7 @@ void verLocalesDisponibles(int fil, int col, Local ** centroComercial, int i, in
 	if(i == fil){
 		return;
 	}
-	if(centroComercial[i][j].DISPONIBLE == DISPONIBLE){
+	if(centroComercial[i][j].disponible == DISPONIBLE){
 		printf("[ID:%d, piso:%d, local:%d]\n",
 		centroComercial[i][j].idLocal, i, j);
 	}
@@ -137,7 +137,7 @@ void verLocalesDisponibles(int fil, int col, Local ** centroComercial, int i, in
 }
 
 //Modifica el nombre de un local que este arrendado
-void modificarNombreLocal(int fil, int col, Local ** centroComercial){
+void modificarNombreLocal(int fil, int col, Local centroComercial[][MAX_LOCALES]){
 	int piso, local;
 	char oldName[35];
 	do{
@@ -152,7 +152,7 @@ void modificarNombreLocal(int fil, int col, Local ** centroComercial){
 			printf("numero invalido max:%d\n", col-1);
 	}while(local < 0 || local >= col);
 	
-	if(centroComercial[piso][local].DISPONIBLE == DISPONIBLE){
+	if(centroComercial[piso][local].disponible == DISPONIBLE){
 		printf("Este local no ha sido arrendado\n");
 		return;
 	}
@@ -161,6 +161,65 @@ void modificarNombreLocal(int fil, int col, Local ** centroComercial){
 	printf("%s ahora se llama %s\n", oldName, centroComercial[piso][local].nombreLocal);
 }
 
+//Agrega una persona a un local
+void agregarPersonaLocal(int fil, int col, Local centroComercial[][MAX_LOCALES]){
+	int piso, local, option, numPersonas, id, celular;
+	Persona newPersona;
+	do{
+		printf("Piso: "); scanf("%d", &piso);
+		if(piso > fil || piso < 0)
+			printf("numero invalido max:%d\n", fil-1);
+	}while(piso < 0 || piso >= fil);
+		
+	do{
+		printf("Numero de local: "); scanf("%d", &local);
+		if(local > col || local < 0)
+			printf("numero invalido max:%d\n", col-1);
+	}while(local < 0 || local >= col);
+	
+	if(centroComercial[piso][local].disponible == DISPONIBLE){
+		printf("Este local no ha sido arrendado\n");
+		return;
+	}
+	
+	//METER AQUI EXCEPTION
+	
+	centroComercial[piso][local].numPersonas++;
+	numPersonas = centroComercial[piso][local].numPersonas;
+	
+	printf("Nombre: "); scanf("%s", centroComercial[piso][local].personas[ numPersonas - 1].nombre );
+	printf("Id: "); scanf("%d", &id );
+	centroComercial[piso][local].personas[ numPersonas - 1].id = id;
+	printf("# Celular: "); scanf("%d", &celular );
+	centroComercial[piso][local].personas[ numPersonas - 1].celular = celular;
+	printf("Email: "); scanf("%s", centroComercial[piso][local].personas[ numPersonas - 1].email );
+	printf("Tipo: ");
+	do{
+		printf("(1)Empleado / (2)Arrendatario "); 
+		scanf( "%d", &option );
+		if( option == 1 ){
+			centroComercial[piso][local].personas[ numPersonas - 1 ].tipo = EMPLEADO;
+		}else if( option == 2 ){
+			centroComercial[piso][local].personas[ numPersonas - 1 ].tipo = ARRENDATARIO;
+		}else{
+			printf("Elegir opcion valida porfavor.\n");
+		}
+	}while( option != 1 && option != 2 );
+	
+	printf("Se agrego a [%s] exitosamente\n", centroComercial[piso][local].personas[ numPersonas - 1].nombre );
+}
+
+void loadCentro( CentroC * centro, FILE * fp ){
+	
+	fwrite( centro, sizeof(centro), 1, fp );
+	
+	return;
+}
+
+
+void saveCentro(){
+	
+}
 
 //Menu 
 int menu(){
@@ -172,6 +231,7 @@ int menu(){
 	printf("4. # de locales disponibles\n");
 	printf("5. Ver locales disponibles\n");
 	printf("6. Cambiar nombre local\n");
+	printf("7. Agregar persona a local\n");
 	printf("0. Salir\n");
 	printf("==> "); scanf("%d", &option);
 	

@@ -21,14 +21,21 @@ int main(){
 	}while( option != 1 && option != 2 );
 	
 	if( option == 1 ){
-		printf("file name: "); scanf( "%s", fileName );
-		if( fp == NULL ){
-			fp = fopen( fileName, "wb" );
-			fclose( fp );
-		}
-		fp = fopen( fileName, "rb" );
+		do{
+			printf("file name: "); scanf( "%s", fileName );
+			fp = fopen( fileName, "rb" );
+			if( fp == NULL ){
+				printf("File not found\n");
+				printf("1 to try again  2 To create\n");
+				printf("==>"); scanf("%d", &option );
+				if( option == 2 ){
+					goto CREATE;
+				}
+			}
+		}while( fp == NULL );
 	}else{
 		//1. Solicitar el número de pisos y locales
+		CREATE:
 		printf("==Crear centro comercial==\n");
 		printf("Nombre del centro comercial: "); scanf("%s", nombreCC);
 		printf("Numero de pisos: "); scanf("%d", &filCC);
@@ -75,8 +82,11 @@ int main(){
 				//4. Modificar info de local
 				modificarNombreLocal(filCC, colCC, centroC->locales);
 				break;
+			case 7:
+				agregarPersonaLocal(filCC, colCC, centroC->locales);
 		}
 	}while(option != 0);
+
 	
 	return 0;
 }
