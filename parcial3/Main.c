@@ -9,10 +9,10 @@ enum cargarCentro {CARGARCENTRO = 1, CREARCENTRO = 2};
 int main(){
 	
 	int filCC, colCC, i, option; // CC = centro comercial
-	FILE * fp;
 	char fileName[MAX_NAME];
 	char nombreCC[35];
-	CentroC * centroC;
+	CentroC centroC;
+	int loaded;
 	
 	do{
 		printf("1. Cargar Centro comercial\n");
@@ -23,8 +23,10 @@ int main(){
 	if( option == 1 ){
 		do{
 			printf("file name: "); scanf( "%s", fileName );
-			fp = fopen( fileName, "rb" );
-			if( fp == NULL ){
+			loaded = loadCentro( &centroC, fileName );
+			filCC = centroC.pisos;
+			colCC = centroC.localesxPiso;
+			if( loaded == 0 ){
 				printf("File not found\n");
 				printf("1 to try again  2 To create\n");
 				printf("==>"); scanf("%d", &option );
@@ -32,7 +34,7 @@ int main(){
 					goto CREATE;
 				}
 			}
-		}while( fp == NULL );
+		}while( loaded == 0 );
 	}else{
 		//1. Solicitar el número de pisos y locales
 		CREATE:
@@ -45,7 +47,6 @@ int main(){
 		printf("Centro comercial creado\n");
 		strcpy( fileName, nombreCC );
 		strcat( fileName, ".dat" );
-		fp = fopen( fileName, "rb" );
 		printf("Archivo del centro comercial: %s\n", fileName);
 	}
 	
@@ -58,35 +59,36 @@ int main(){
 		switch(option){
 			case 1:
 				//2. Agrega un local al centro comercial
-				agregarLocal(filCC, colCC, centroC->locales);
+				agregarLocal(filCC, colCC, centroC.locales);
 				break;
 			case 2:
 				//5. Elimina un local (lo vuelve disponible)
-				eliminarLocal(filCC, colCC, centroC->locales);
+				eliminarLocal(filCC, colCC, centroC.locales);
 				break;
 			case 3:
 				//3. Consulta info (mi version de ver locales)
-				verTodosLocales(filCC, colCC, centroC->locales);
+				verTodosLocales(filCC, colCC, centroC.locales);
 				break;
 			case 4:
 				//3. Consulta info (recursive)
 				printf("# de locales disponibles: %d\n", 
-				cantidadLocalesDisponibles(filCC, colCC, centroC->locales, 0, 0, 0));
+				cantidadLocalesDisponibles(filCC, colCC, centroC.locales, 0, 0, 0));
 				break;
 			case 5:
 				//3. Consulta info (recursive)
 				printf("==Locales disponibles==\n");
-				verLocalesDisponibles(filCC, colCC, centroC->locales, 0, 0);
+				verLocalesDisponibles(filCC, colCC, centroC.locales, 0, 0);
 				break;
 			case 6:
 				//4. Modificar info de local
-				modificarNombreLocal(filCC, colCC, centroC->locales);
+				modificarNombreLocal(filCC, colCC, centroC.locales);
 				break;
 			case 7:
-				agregarPersonaLocal(filCC, colCC, centroC->locales);
+				agregarPersonaLocal(filCC, colCC, centroC.locales);
 		}
 	}while(option != 0);
-
+	
+	saveCentro( &centroC, fileName );
 	
 	return 0;
 }

@@ -6,7 +6,7 @@
 
 
 //Crea el centro comercial de fil pisos y col cantidad de locales
-CentroC * crearCentroComercial(int * fil, int * col, char * name){
+CentroC crearCentroComercial(int * fil, int * col, char * name){
 	
 	// PASO POR REFERENCIA AQUI!
 	int i, j, counter = 1;
@@ -14,23 +14,23 @@ CentroC * crearCentroComercial(int * fil, int * col, char * name){
 	// USO DE MEMORIA DINAMICA AQUI!
 
 	
-	CentroC * centroC = malloc( sizeof(CentroC) );
+	CentroC centroC;
 	
-	strcpy( centroC->nombreCentro , name );
+	strcpy( centroC.nombreCentro , name );
 	
-	centroC->pisos = *fil;
+	centroC.pisos = *fil;
 	
-	centroC->localesxPiso = *col;
+	centroC.localesxPiso = *col;
 	
 	for(i = 0; i < *fil; i++){
 		for(j = 0; j < *col; j++){
 			Local newLocal;
-			newLocal.disponible = 1;
+			newLocal.disponible = DISPONIBLE;
 			newLocal.idLocal = counter;
 			newLocal.precio = 0;
 			newLocal.numPersonas = 0;
 			counter++;
-			centroC->locales[i][j] = newLocal;
+			centroC.locales[i][j] = newLocal;
 		}
 	}
 	
@@ -209,16 +209,22 @@ void agregarPersonaLocal(int fil, int col, Local centroComercial[][MAX_LOCALES])
 	printf("Se agrego a [%s] exitosamente\n", centroComercial[piso][local].personas[ numPersonas - 1].nombre );
 }
 
-void loadCentro( CentroC * centro, FILE * fp ){
-	
-	fwrite( centro, sizeof(centro), 1, fp );
-	
-	return;
+int loadCentro( CentroC * centro, char * fileName ){
+	FILE * fp = fopen( fileName, "rb" );
+	if( fp == NULL ){
+		return 0;
+	}
+	fread( centro, sizeof(*centro), 1, fp );
+	fclose( fp );
+	return 1;
 }
 
 
-void saveCentro(){
-	
+void saveCentro( CentroC * centro, char * fileName ){
+	FILE * fp = fopen( fileName, "wb" );
+	fwrite( centro, sizeof(*centro), 1, fp );
+	fclose( fp );
+	return;
 }
 
 //Menu 

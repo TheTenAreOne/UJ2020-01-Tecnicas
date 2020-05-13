@@ -3,3 +3,4 @@
 3. Se agrego la estructura personas
 4. Se agrego la opcion para agregar una persona
 5. Se agregaron constantes de maximos para los arreglos y matrices
+6. Se puede guardar y cargar archivos (centros comerciales).
