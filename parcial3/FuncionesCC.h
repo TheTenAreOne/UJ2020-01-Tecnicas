@@ -62,6 +62,9 @@ void merge(Local * array, int left, int middle, int right);
 void mergeSort(Local * array, int left, int right);
 void mostrarLocalesOrdenPrecio( CentroC * centro, int fil, int col );
 void mostrarPersonasOrdenNombre( CentroC * centro );
+int partition (Persona * personas, int low, int high);
+void quickSort(Persona * personas, int low, int high);
+void mostrarPersonasOrdenID( CentroC * centro );
 int menu();
 
 #endif /* FUNCIONESCC_H_ */

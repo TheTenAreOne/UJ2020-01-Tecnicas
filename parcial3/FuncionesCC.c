@@ -413,6 +413,82 @@ void mostrarPersonasOrdenNombre( CentroC * centro ){
 	return;
 }
 
+
+//Quicksort https://www.geeksforgeeks.org/quick-sort/
+
+int partition (Persona * personas, int low, int high){ 
+	
+	Persona temp;
+    int pivot = personas[high].id;   
+    int i = (low - 1);  
+  
+    for (int j = low; j <= high- 1; j++) 
+    { 
+        if (personas[j].id < pivot) 
+        { 
+            i++;    
+			temp = personas[i];
+			personas[i] = personas[j];
+			personas[j] = temp;
+        } 
+    }
+	temp = personas[i + 1];
+	personas[i + 1] = personas[high];
+	personas[high] = temp;
+    return (i + 1); 
+} 
+
+void quickSort(Persona * personas, int low, int high){ 
+    if (low < high) 
+    { 
+        
+        int pi = partition(personas, low, high); 
+  
+        quickSort(personas, low, pi - 1); 
+        quickSort(personas, pi + 1, high); 
+    } 
+}
+
+
+void mostrarPersonasOrdenID( CentroC * centro ){
+	
+	int i;
+	
+	int piso, local;
+	
+	printf("Piso: "); scanf("%d", &piso);
+	printf("Local: "); scanf("%d", &local);
+	
+	if( centro->locales[piso][local].disponible == DISPONIBLE ){
+		printf("Este local no ha sido arrendado\n");
+		return;
+	}
+	
+	int numPersonas = centro->locales[piso][local].numPersonas;
+	
+	if( numPersonas == 0 ){
+		printf("Este local no tiene personas\n");
+		return;
+	}
+	
+	Persona personas[numPersonas];
+	
+	for( i = 0; i < numPersonas; i++ ){
+		personas[i] = centro->locales[piso][local].personas[i];
+	}
+	
+	printf("np: %d\n", numPersonas);
+	
+	quickSort( personas, 0, numPersonas - 1 );
+	
+	
+	printf("Personas:\n");
+	for( i = 0; i < numPersonas; i++ ){
+		printf("> [%s, %d]\n", personas[i].nombre, personas[i].id );
+	}
+	
+}
+
 //Menu 
 int menu(){
 	int option;
@@ -427,6 +503,7 @@ int menu(){
 	printf("8. Mostrar locales orden abc\n");
 	printf("9. Mostrar orden por precio\n");
 	printf("10. Mostrar personas local orden\n");
+	printf("11. Mostrar personas orden id\n");
 	printf("0. Salir\n");
 	printf("==> "); scanf("%d", &option);
 	

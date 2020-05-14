@@ -95,6 +95,9 @@ int main(){
 			case 10:
 				mostrarPersonasOrdenNombre( &centroC );
 				break;
+			case 11:
+				mostrarPersonasOrdenID( &centroC );
+				break;
 		}
 	}while(option != 0);
 	
