@@ -59,11 +59,11 @@ int main(){
 		switch(option){
 			case 1:
 				//2. Agrega un local al centro comercial
-				agregarLocal(filCC, colCC, centroC.locales);
+				agregarLocal(filCC, colCC, centroC.locales, &centroC );
 				break;
 			case 2:
 				//5. Elimina un local (lo vuelve disponible)
-				eliminarLocal(filCC, colCC, centroC.locales);
+				eliminarLocal(filCC, colCC, centroC.locales, &centroC );
 				break;
 			case 3:
 				//3. Consulta info (mi version de ver locales)
@@ -85,6 +85,10 @@ int main(){
 				break;
 			case 7:
 				agregarPersonaLocal(filCC, colCC, centroC.locales);
+				break;
+			case 8:
+				mostrarNombresLocalesOrden( &centroC , filCC, colCC );
+				break;
 		}
 	}while(option != 0);
 	

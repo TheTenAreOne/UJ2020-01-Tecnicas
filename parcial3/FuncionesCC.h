@@ -39,6 +39,7 @@ typedef struct CentroC{
 	int pisos;
 	int localesxPiso;
 	Local locales[MAX_PISOS][MAX_LOCALES];
+	int localesArrendados;
 } CentroC;
 
 
@@ -47,8 +48,8 @@ void mostrarLocal(Local ** centroComercial, int numPiso,
 		int numLocalxPiso, int numPisos, int numLocalesxPiso);
 
 CentroC crearCentroComercial(int * fil, int * col, char * name);
-void agregarLocal(int fil, int col, Local centroComercial[][MAX_LOCALES] );
-void eliminarLocal(int fil, int col, Local centroComercial[][MAX_LOCALES]);
+void agregarLocal(int fil, int col, Local centroComercial[][MAX_LOCALES], CentroC * centro );
+void eliminarLocal(int fil, int col, Local centroComercial[][MAX_LOCALES], CentroC * centro );
 void verTodosLocales(int fil, int col, Local centroComercial[][MAX_LOCALES]);
 int cantidadLocalesDisponibles(int fil, int col, Local centroComercial[][MAX_LOCALES], int i, int j, int counter);
 void verLocalesDisponibles(int fil, int col, Local centroComercial[][MAX_LOCALES], int i, int j);
@@ -56,6 +57,7 @@ void modificarNombreLocal(int fil, int col, Local centroComercial[][MAX_LOCALES]
 void agregarPersonaLocal(int fil, int col, Local centroComercial[][MAX_LOCALES]);
 int loadCentro( CentroC * centro, char * fileName );
 void saveCentro( CentroC * centro, char * fileName );
+void mostrarNombresLocalesOrden( CentroC  * centro , int fil, int col );
 int menu();
 
 #endif /* FUNCIONESCC_H_ */

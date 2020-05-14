@@ -31,6 +31,7 @@ CentroC crearCentroComercial(int * fil, int * col, char * name){
 			newLocal.numPersonas = 0;
 			counter++;
 			centroC.locales[i][j] = newLocal;
+			centroC.localesArrendados = 0;
 		}
 	}
 	
@@ -39,7 +40,7 @@ CentroC crearCentroComercial(int * fil, int * col, char * name){
 
 
 //Agrega un local en el piso deseado y la posición deseada
-void agregarLocal(int fil, int col, Local centroComercial[][MAX_LOCALES] ){
+void agregarLocal(int fil, int col, Local centroComercial[][MAX_LOCALES], CentroC * centro ){
 	int piso, local, precio;
 	do{
 		printf("Piso: "); scanf("%d", &piso);
@@ -60,14 +61,14 @@ void agregarLocal(int fil, int col, Local centroComercial[][MAX_LOCALES] ){
 	printf("nombre: "); scanf("%s", centroComercial[piso][local].nombreLocal);
 	printf("precio: "); scanf("%d", &precio);
 	centroComercial[piso][local].precio = precio;
-	printf("llega aqui\n");
+	centro->localesArrendados++;
 	printf("Local <%s> creado exitosamente\n", centroComercial[piso][local].nombreLocal);
 	return;
 }
 
 
 //Elimina un local (si se encontraba no DISPONIBLE, ahora estara DISPONIBLE)
-void eliminarLocal(int fil, int col, Local centroComercial[][MAX_LOCALES] ){
+void eliminarLocal(int fil, int col, Local centroComercial[][MAX_LOCALES], CentroC * centro ){
 	int piso, local;
 	do{
 		printf("Piso: "); scanf("%d", &piso);
@@ -83,6 +84,7 @@ void eliminarLocal(int fil, int col, Local centroComercial[][MAX_LOCALES] ){
 	centroComercial[piso][local].disponible = DISPONIBLE;
 	printf("El local <ID:%d> ahora se encuentra DISPONIBLE\n", 
 	centroComercial[piso][local].idLocal);
+	centro->localesArrendados--;
 	return;
 }
 
@@ -227,6 +229,54 @@ void saveCentro( CentroC * centro, char * fileName ){
 	return;
 }
 
+
+//Algoritmos de sorteo -------- Algoritmos de sorteo 
+
+
+//Selection sort
+void mostrarNombresLocalesOrden( CentroC  * centro , int fil, int col ){
+	int i, j, min = 0, localNum, arrPos = 0;
+	char arrNombres[ centro->localesArrendados ][MAX_NAME];
+	localNum = centro->localesArrendados;
+	char tempNombre[MAX_NAME];
+	
+	if( localNum == 0 ){
+		printf("No hay locales\n");
+		return;
+	}
+	
+	for(i = 0; i < fil; i++ ){
+		for(j = 0; j < col; j++ ){
+			if(centro->locales[i][j].disponible == NODISPONIBLE ){
+				strcpy( arrNombres[arrPos], centro->locales[i][j].nombreLocal );
+				arrPos++;
+			}
+		}
+	}
+	
+	//Selection sort ---------- Selection sort ---------- Selection sort
+	arrPos = 0;
+	for( i = 0; i < localNum - 1; i++ ){
+		min = i;
+		for( j = i + 1; j < localNum; j++ ){
+			if( strcmp( arrNombres[j], arrNombres[min]) < 0 ){
+				min = j;
+			}
+		}
+		strcpy(tempNombre, arrNombres[min]);
+		strcpy(arrNombres[min], arrNombres[i]);
+		strcpy(arrNombres[i], tempNombre);
+	}
+	
+	
+	printf("=Locales ordenados alfabeticamente=\n");
+	for( i = 0; i < localNum; i++ ){
+		printf( " >Local: %s\n", arrNombres[i] );
+	}
+	
+	return;
+}
+
 //Menu 
 int menu(){
 	int option;
@@ -238,6 +288,7 @@ int menu(){
 	printf("5. Ver locales disponibles\n");
 	printf("6. Cambiar nombre local\n");
 	printf("7. Agregar persona a local\n");
+	printf("8. Mostrar locales orden abc\n");
 	printf("0. Salir\n");
 	printf("==> "); scanf("%d", &option);
 	
