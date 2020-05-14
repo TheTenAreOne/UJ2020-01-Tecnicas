@@ -363,6 +363,56 @@ void mostrarLocalesOrdenPrecio( CentroC * centro, int fil, int col ){
 	return;
 }
 
+//Insertion sort
+
+void mostrarPersonasOrdenNombre( CentroC * centro ){
+	
+	int piso, local;
+	
+	printf("Piso: "); scanf("%d", &piso);
+	printf("Local: "); scanf("%d", &local);
+	
+	if( centro->locales[piso][local].disponible == DISPONIBLE ){
+		printf("Este local no ha sido arrendado\n");
+		return;
+	}
+	
+	int numPersonas = centro->locales[piso][local].numPersonas;
+	
+	if( numPersonas == 0 ){
+		printf("Este local no tiene personas\n");
+		return;
+	}
+	
+	Persona personas[numPersonas];
+	
+	int i,j;
+	
+	for( i = 0; i < numPersonas; i++ ){
+		personas[i] = centro->locales[piso][local].personas[i];
+	}
+	
+	
+	char nombre[MAX_NAME];
+	for( i = 1; i < numPersonas; i++ ){
+		strcpy( nombre, personas[i].nombre);
+		j = i - 1;
+		
+		while( j >= 0 && strcmp( nombre, personas[j].nombre) < 0 ){
+			strcpy( personas[j + 1].nombre, personas[j].nombre);
+			j = j - 1;
+		}
+		strcpy( personas[j + 1].nombre, nombre);
+	}
+	
+	printf("Personas:\n");
+	for( i = 0; i < numPersonas; i++ ){
+		printf("> [%s, %d]\n", personas[i].nombre, personas[i].id );
+	}
+	
+	return;
+}
+
 //Menu 
 int menu(){
 	int option;
@@ -376,6 +426,7 @@ int menu(){
 	printf("7. Agregar persona a local\n");
 	printf("8. Mostrar locales orden abc\n");
 	printf("9. Mostrar orden por precio\n");
+	printf("10. Mostrar personas local orden\n");
 	printf("0. Salir\n");
 	printf("==> "); scanf("%d", &option);
 	
