@@ -277,6 +277,92 @@ void mostrarNombresLocalesOrden( CentroC  * centro , int fil, int col ){
 	return;
 }
 
+
+//Merge sort
+void merge(Local * array, int left, int middle, int right){
+	
+	int i, j, k;
+	int size1 = middle - left + 1;
+	int size2 = right - middle;
+	
+	Local Left[size1], Right[size2];
+	
+	for(i = 0; i < size1; i++){
+		Left[i] = array[left + i];
+	}
+	for(i = 0; i < size2; i++){
+		Right[i] = array[middle + 1 + i];
+	}
+	
+	i = j = 0;
+	k = left;
+	while(i < size1 && j < size2){
+		
+		if(Left[i].precio <= Right[j].precio){
+			array[k] = Left[i];
+			i++;
+		}else{
+			array[k] = Right[j];
+			j++;
+		}
+		k++;
+	}
+	
+	while(i < size1){
+		array[k] = Left[i];
+		i++;
+		k++;
+	}
+	
+	while(j < size2){
+		array[k] = Right[j];
+		j++;
+		k++;
+	}
+	
+	return;
+}
+
+void mergeSort( Local * array, int left, int right){
+	
+	if(left < right){
+		
+		int middle = left + (right - left)/2;
+		
+		mergeSort(array, left, middle);
+		mergeSort(array, middle+1, right);
+		
+		merge(array, left, middle, right);
+	}
+	
+	return;
+}
+
+void mostrarLocalesOrdenPrecio( CentroC * centro, int fil, int col ){
+	
+	int i, j, localesPos = 0;
+	int numLocales = centro->localesArrendados;
+	
+	Local locales[numLocales];
+	
+	for( i = 0; i < fil; i++ ){
+		for( j = 0; j < col; j++ ){
+			if( centro->locales[i][j].disponible == NODISPONIBLE){
+				locales[localesPos] = centro->locales[i][j];
+				localesPos++;
+			}
+		}
+	}
+	
+	mergeSort( locales, 0, numLocales - 1 );
+	
+	for( i = 0; i < numLocales; i++ ){
+		printf("Local: %s <$ %d>\n", locales[i].nombreLocal, locales[i].precio);
+	}
+	
+	return;
+}
+
 //Menu 
 int menu(){
 	int option;
@@ -289,6 +375,7 @@ int menu(){
 	printf("6. Cambiar nombre local\n");
 	printf("7. Agregar persona a local\n");
 	printf("8. Mostrar locales orden abc\n");
+	printf("9. Mostrar orden por precio\n");
 	printf("0. Salir\n");
 	printf("==> "); scanf("%d", &option);
 	

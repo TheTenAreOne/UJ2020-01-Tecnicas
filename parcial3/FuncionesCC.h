@@ -58,6 +58,9 @@ void agregarPersonaLocal(int fil, int col, Local centroComercial[][MAX_LOCALES])
 int loadCentro( CentroC * centro, char * fileName );
 void saveCentro( CentroC * centro, char * fileName );
 void mostrarNombresLocalesOrden( CentroC  * centro , int fil, int col );
+void merge(Local * array, int left, int middle, int right);
+void mergeSort(Local * array, int left, int right);
+void mostrarLocalesOrdenPrecio( CentroC * centro, int fil, int col );
 int menu();
 
 #endif /* FUNCIONESCC_H_ */

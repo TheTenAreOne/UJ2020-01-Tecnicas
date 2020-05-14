@@ -89,6 +89,9 @@ int main(){
 			case 8:
 				mostrarNombresLocalesOrden( &centroC , filCC, colCC );
 				break;
+			case 9:
+				mostrarLocalesOrdenPrecio( &centroC, filCC, colCC );
+				break;
 		}
 	}while(option != 0);
 	
