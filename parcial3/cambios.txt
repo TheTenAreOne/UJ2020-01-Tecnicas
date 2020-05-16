@@ -4,3 +4,5 @@
 4. Se agrego la opcion para agregar una persona
 5. Se agregaron constantes de maximos para los arreglos y matrices
 6. Se puede guardar y cargar archivos (centros comerciales).
+7. Se agregan mostrar personas (sorteos, quick, merge, insertion y selection)
+8. Se agregan domicilios (queue)

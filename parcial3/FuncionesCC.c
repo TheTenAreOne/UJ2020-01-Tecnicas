@@ -32,6 +32,7 @@ CentroC crearCentroComercial(int * fil, int * col, char * name){
 			counter++;
 			centroC.locales[i][j] = newLocal;
 			centroC.localesArrendados = 0;
+			centroC.numDomicilios = 0;
 		}
 	}
 	
@@ -489,6 +490,65 @@ void mostrarPersonasOrdenID( CentroC * centro ){
 	
 }
 
+
+
+//Queue
+
+void agregarDomicilio( CentroC * centro ){
+	
+	int celular;
+	
+	if( centro->numDomicilios == MAX_DOMICILIOS ){
+		printf("Numero maximo de domicilios alcanzado!\n");
+		return;
+	}
+	int numDomicilios = centro->numDomicilios;
+	
+	
+	fflush( stdin );
+	printf("Direccion: ");scanf("%[^\n]%*c", centro->domicilios[numDomicilios].direccion);
+	
+	fflush( stdin );
+	printf("Celular: "); scanf("%d", &celular);
+	centro->domicilios[numDomicilios].celular = celular;
+	
+	fflush( stdin );
+	printf("Descripcion: "); scanf("%[^\n]%*c", centro->domicilios[numDomicilios].descripcion);
+	centro->numDomicilios++;
+	printf("Domicilio agregado\n");
+	return;
+}
+
+void despacharDomicilio( CentroC * centro ){
+	if( centro->numDomicilios == 0 ){
+		printf("No hay domicilios pendientes\n");
+		return;
+	}
+	int i;
+	for( i = 0; i < centro->numDomicilios - 1; i++ ){
+		centro->domicilios[ i ] = centro->domicilios[ i + 1 ];
+	}
+	centro->numDomicilios--;
+	printf("Domicilio despachado\n");
+	return;
+}
+
+void mostrarDomicilios( CentroC * centro ){
+	if( centro->numDomicilios == 0 ){
+		printf("No hay domicilios para mostrar\n");
+		return;
+	}
+	int i;
+	for( i = 0; i < centro->numDomicilios; i++ ){
+		printf("------------------\n");
+		printf("Direcion: %s\n", centro->domicilios[ i ].direccion);
+		printf("Celular: %d\n", centro->domicilios[ i ].celular);
+		printf("Descripcion: %s\n", centro->domicilios[ i ].descripcion);
+		printf("------------------\n");
+	}
+	return;
+}
+
 //Menu 
 int menu(){
 	int option;
@@ -504,6 +564,9 @@ int menu(){
 	printf("9. Mostrar orden por precio\n");
 	printf("10. Mostrar personas local orden\n");
 	printf("11. Mostrar personas orden id\n");
+	printf("12. Agregar domicilio\n");
+	printf("13. Despachar domicilio\n");
+	printf("14. Mostrar domicilios\n");
 	printf("0. Salir\n");
 	printf("==> "); scanf("%d", &option);
 	

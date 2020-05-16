@@ -6,10 +6,13 @@
 //PARCIAL 2 Daniel Caicedo Jaramillo
 
 #define MAX_NAME 35
+#define MAX_DIRECCION 30
+#define MAX_DESCRIPCION 50
 #define MAX_EMAIL 45
 #define MAX_PISOS 10
 #define MAX_LOCALES 10
 #define MAX_PERSONAS 50
+#define MAX_DOMICILIOS 30
 
 //Uso de enums
 enum estadoLocal {NODISPONIBLE = 0, DISPONIBLE = 1};
@@ -22,6 +25,13 @@ typedef struct Persona{
 	char email[MAX_EMAIL];
 	int tipo;
 } Persona;
+
+typedef struct Domicilio{
+	char direccion[MAX_DIRECCION];
+	int celular;
+	char descripcion[MAX_DESCRIPCION];
+} Domicilio;
+
 //Local 
 typedef struct Local{
 	char nombreLocal[MAX_NAME];
@@ -40,6 +50,8 @@ typedef struct CentroC{
 	int localesxPiso;
 	Local locales[MAX_PISOS][MAX_LOCALES];
 	int localesArrendados;
+	Domicilio domicilios[30];
+	int numDomicilios;
 } CentroC;
 
 
@@ -65,6 +77,9 @@ void mostrarPersonasOrdenNombre( CentroC * centro );
 int partition (Persona * personas, int low, int high);
 void quickSort(Persona * personas, int low, int high);
 void mostrarPersonasOrdenID( CentroC * centro );
+void agregarDomicilio( CentroC * centro );
+void despacharDomicilio( CentroC * centro );
+void mostrarDomicilios( CentroC * centro );
 int menu();
 
 #endif /* FUNCIONESCC_H_ */

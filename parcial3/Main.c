@@ -98,6 +98,15 @@ int main(){
 			case 11:
 				mostrarPersonasOrdenID( &centroC );
 				break;
+			case 12:
+				agregarDomicilio( &centroC );
+				break;
+			case 13:
+				despacharDomicilio( &centroC );
+				break;
+			case 14:
+				mostrarDomicilios( &centroC );
+				break;
 		}
 	}while(option != 0);
 	
